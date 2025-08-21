@@ -1,0 +1,7 @@
+update packages
+create ansible user
+install packages
+	tree
+	git
+deactivate password and root login
+cloud-init
