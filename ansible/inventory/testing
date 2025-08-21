@@ -1,2 +1,8 @@
 [webserver]
-10.2.0.5
+10.0.2.5
+
+[ubuntu]
+10.0.2.5
+
+[linux:children]
+ubuntu

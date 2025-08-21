@@ -1,0 +1,6 @@
+- name: Deploy Preparation tasks
+  hosts: linux
+  gather_facts: yes
+
+  roles: 
+    - role: prepare_linux
