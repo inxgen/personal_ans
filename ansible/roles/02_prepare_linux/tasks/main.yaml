@@ -1,0 +1,38 @@
+- name: Update Cache
+  apt:
+    update_cache: True
+  become: yes
+
+- name: Upgrade APT Packages
+  apt: 
+    upgrade: yes
+  become: yes
+
+- name: Install APT Packages
+  package: 
+    name:
+      - tree
+      - git
+  become: yes
+
+- name: Deactivate ssh root login
+  lineinfile:  
+    dest: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: "PermitRootLogin no"
+    state: present
+  become: yes
+
+- name: Deactivate ssh pass login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication'
+    line: "PasswordAuthentication no"
+    state: present
+  become: yes
+
+- name: Restart ssh
+  systemd:
+    name: sshd
+    state: restarted
+  become: yes
